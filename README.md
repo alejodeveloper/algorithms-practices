@@ -3,10 +3,10 @@ Practices of different algorithms
 
 ## Python developers
 - Alejandro Espitia: 
-  -- personal email **: alejo.pm92@gmail.com
-  -- Github username **: alejodeveloper
+  - personal email **: alejo.pm92@gmail.com**
+  - Github username **: alejodeveloper - alejodveloper**
 
 ## Java developers
 - Ivan Gonzalez:
-  -- personal email **: ianlee9204@gmail.com
-  -- Github username **: ivangv92
+  - personal email **: ianlee9204@gmail.com**
+  - Github username **: ivangv92**
