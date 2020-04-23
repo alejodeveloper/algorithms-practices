@@ -169,13 +169,17 @@ class BaseNumbers:
             raise Exception(exception_message)
 
 
-my_input = str(input())
+while True:
+    my_input = str(input())
 
-if my_input != '0,0':
-    size, number_str = my_input.strip().split(',')
-    size = int(size)
-    numbers = BaseNumbers(size)
-    numbers_str = reduce(
-        lambda base, my_number: base + numbers.get_number(int(my_number)),
-        number_str, ''
-    )
+    if my_input != '0,0':
+        size, number_str = my_input.strip().split(',')
+        size = int(size)
+        numbers = BaseNumbers(size)
+        numbers_str = reduce(
+            lambda base, my_number: base + numbers.get_number(int(my_number)),
+            number_str, ''
+        )
+        print(numbers_str)
+    else:
+        break
