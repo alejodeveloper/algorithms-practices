@@ -7,8 +7,8 @@ Practices of different algorithms
   - Github username **: alejodeveloper - alejodveloper**
   
 - Nestor Mauricio Rodriguez
- - personal email **:nmrodirguez91@gmail.com**
- - Github username **: nmrodriguezdev**
+  - personal email **:nmrodirguez91@gmail.com**
+  - Github username **: nmrodriguezdev**
 
 ## Java developers
 - Ivan Gonzalez:
