@@ -5,6 +5,10 @@ Practices of different algorithms
 - Alejandro Espitia: 
   - personal email **: alejo.pm92@gmail.com**
   - Github username **: alejodeveloper - alejodveloper**
+  
+- Nestor Mauricio Rodriguez
+ - personal email **:nmrodirguez91@gmail.com**
+ - Github username **: nmrodriguezdev**
 
 ## Java developers
 - Ivan Gonzalez:
