@@ -16,13 +16,12 @@ def repeated_string(my_str: str, final_len: int) -> int:
     final string
     """
 
-    if my_str:
-        many_times = final_len//len(my_str)
-        my_char = my_str.count(A)
+    many_times = final_len//len(my_str)
+    my_char = my_str.count(A)
 
-        count_decimal = my_str[:final_len % len(my_str)].count(A)
-        repeated_times = my_char*many_times + count_decimal
-        return repeated_times
+    count_decimal = my_str[:final_len % len(my_str)].count(A)
+    repeated_times = my_char*many_times + count_decimal
+    return repeated_times
 
 
 if __name__ == '__main__':
