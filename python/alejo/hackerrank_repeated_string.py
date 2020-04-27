@@ -16,10 +16,8 @@ def repeated_string(my_str: str, final_len: int) -> int:
     """
     final_str = ''
     while len(final_str) < final_len:
-        for char in my_str:
-            final_str += char
-            if len(final_str) == final_len:
-                break
+        final_str += my_str
+    final_str = final_str[:final_len]
     return final_str.count(my_str[0])
 
 
