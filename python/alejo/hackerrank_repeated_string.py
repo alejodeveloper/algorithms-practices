@@ -1,5 +1,6 @@
 #!/bin/python3
 import os
+import math
 
 # Complete the repeatedString function below.
 from functools import reduce
@@ -14,11 +15,11 @@ def repeated_string(my_str: str, final_len: int) -> int:
     :return: The number of time that the initial string is repeated in the
     final string
     """
-    final_str = ''
-    while len(final_str) < final_len:
-        final_str += my_str
-    final_str = final_str[:final_len]
-    return final_str.count(my_str[0])
+    if my_str:
+        many_times = math.ceil(final_len/len(my_str))
+        final_str = my_str*many_times
+        final_str = final_str[:final_len]
+        return final_str.count(my_str[0])
 
 
 if __name__ == '__main__':
