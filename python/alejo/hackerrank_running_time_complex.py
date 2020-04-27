@@ -1,4 +1,5 @@
 BEGIN_OF_ITERATION = 5
+RES_ZERO = 0
 
 
 def is_prime(my_number: int) -> bool:
@@ -18,8 +19,10 @@ def is_prime(my_number: int) -> bool:
         return False
 
     iteration_number = BEGIN_OF_ITERATION
+    # Any number can be represent by the series 6k +- 1
     while iteration_number * iteration_number <= my_number:
-        if my_number % iteration_number == 0 or my_number % (iteration_number + 2) == 0:
+        if my_number % iteration_number == RES_ZERO or \
+                my_number % (iteration_number + 2) == RES_ZERO:
             return False
         iteration_number = iteration_number + 6
     return True
