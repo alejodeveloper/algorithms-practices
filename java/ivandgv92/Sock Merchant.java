@@ -13,7 +13,7 @@ public class Solution {
         int number=0;
         HashMap<Integer, Double> map = new HashMap<Integer, Double>(); 
   
-        for (int i=0;i<ar.length-1;i++){
+        for (int i=0;i<ar.length;i++){
             if(!map.containsKey(ar[i])){
                 map.put(ar[i],0.5);
             }else{
