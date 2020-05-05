@@ -1,12 +1,4 @@
-#!/bin/python3
-
-import math
 import os
-import random
-import re
-import sys
-
-# Complete the sherlockAndAnagrams function below.
 
 
 def sherlock_anagrams(my_string: str) -> int:
@@ -16,11 +8,24 @@ def sherlock_anagrams(my_string: str) -> int:
     :return: The number of permutations (anagrams) that the string has
     """
     anagrams = {}
-    unique_words = list(set([char for char in my_string]))
-    accumulated = ''
-    for index, char in enumerate(unique_words):
-        anagrams[char] = my_string.count(char)
-        
+    string_size = len(my_string)
+    anagrams_result = 0
+    for index in range(1, string_size):
+        for another_index in range(string_size - index + 1):
+            substring = ''.join(
+                sorted(
+                    my_string[another_index: another_index+index]
+                )
+            )
+            if anagrams.get(substring):
+                anagrams[substring] += 1
+            else:
+                anagrams[substring] = 1
+
+            anagrams_result += anagrams.get(substring) - 1
+
+    return anagrams_result
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
