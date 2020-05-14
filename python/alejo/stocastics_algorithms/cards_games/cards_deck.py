@@ -51,8 +51,9 @@ def main(hand_size: int, number_tries: int):
     deck = create_deck()
     hands = [get_hand(hand_size, deck) for _ in range(number_tries)]
 
+    flush = 0
     for hand in hands:
-        flush = 0
+
         my_hand = reduce(
             lambda acc, value: acc + value[1],
             hand, ''
@@ -60,9 +61,9 @@ def main(hand_size: int, number_tries: int):
         my_values = ''.join(VALUES)
         if my_hand in my_values:
             flush += 1
-        print(
-            f'The probability of get a flush in one hand of {hand_size} is '
-            f'{flush / number_tries}')
+    print(
+        f'The probability of get a flush in one hand of {hand_size} is '
+        f'{flush / number_tries : .2%}')
 
 
 if __name__ == '__main__':
