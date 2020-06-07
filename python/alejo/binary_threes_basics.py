@@ -5,73 +5,94 @@ class Node:
         self.right = None
         self.data = data
 
-    def insert_data(self, new_data: int):
-        if self.data >= new_data :
-            if self.left:
-                self.left.insert_data(new_data)
 
-            else:
-                self.left = Node(new_data)
+class BinaryTree:
+    def __init__(self, root: Node = None):
+        self.root = root
+
+    def insert(self, data):
+        if self.root is None:
+            self.root = Node(data)
 
         else:
-            if self.right:
-                self.right.insert_data(new_data)
-            else:
-                self.right = Node(new_data)
+            self.insert_data(data, self.root)
 
-    def contains_value(self, new_data: int) -> bool:
-        if self.data == new_data:
+    def insert_data(self, new_data, node: Node):
+        if node.data >= new_data:
+            if node.left:
+                self.insert_data(new_data, node.left)
+            else:
+                node.left = Node(new_data)
+        else:
+            if node.right:
+                self.insert_data(new_data, node.right)
+            else:
+                node.right = Node(new_data)
+
+    def contains_value(self, new_data: int, node: Node) -> bool:
+        if node.data == new_data:
             return True
-        elif self.data > new_data:
-            if self.left:
-                self.left.contains_value(new_data)
+        elif node.data > new_data:
+            if node.left:
+                self.contains_value(new_data, node.left)
 
             else:
                 return False
 
-        elif self.data < new_data:
-            if self.right:
-                self.left.contains_value(new_data)
+        elif node.data < new_data:
+            if node.right:
+                self.contains_value(new_data, node.right)
 
             else:
                 return False
 
-    def print_three(self):
-        if self.left:
-            self.left.paint_three()
+    def __str__(self):
+        if self.root is None:
+            return ""
 
-        print(f'{self.data}')
+        self.print_three(self.root)
 
-        if self.right:
-            self.right.print_three()
+    def print_three(self, node: Node):
+        if node.left:
+            self.print_three(node.left)
 
-    def delete_node(self, data):
-        if self.data == data:
-            predecessor = self.get_predecessor(self)
-            self.data = predecessor
+        print(f'{node.data}')
 
-        if self.data < data:
-            self.left.delete_node(data)
+        if node.right:
+            self.print_three(node.right)
 
-        elif self.data > data:
-            self.right.delete(data)
+    def remove(self, data):
+        if self.root:
+            self.delete_node(data, self.root)
+
+    def delete_node(self, data, node: Node) -> Node:
+        if not node:
+            return node
+
+        if node.data == data:
+
+            if not node.right and not node.left:
+                return None
+
+            elif not node.left:
+                return node.right
+
+            elif not node.right:
+                return node.left
+
+            else:
+                return self.get_predecessor(node.left)
+
+        elif node.data < data:
+            node.left = self.delete_node(data, node.left)
+
+        elif node.data > data:
+            node.right = self.delete_node(data, node.right)
+
         else:
             print("404 Not found")
 
-    def get_predecessor(self, prev_node):
-        if self.right:
-            predecessor = self.right.get_predecessor(self)
-
-            return predecessor
-
-        if self.left:
-            predecessor = self.data
-            self.data = self.left.data
-            self.left = self.left.left
-            self.right = self.left.rigth
-
-            return predecessor
-
-        prev_node.right = None
-        predecessor = self.data
-        return predecessor
+    def get_predecessor(self, node: Node) -> Node:
+        if node.right:
+            return self.get_predecessor(node.right)
+        return node
