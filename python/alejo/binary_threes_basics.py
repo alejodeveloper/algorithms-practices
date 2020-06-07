@@ -10,6 +10,24 @@ class BinaryTree:
     def __init__(self, root: Node = None):
         self.root = root
 
+    def __str__(self):
+        if self.root is None:
+            return ""
+
+        return self.print_three(self.root)
+
+    def print_three(self, node: Node) -> str:
+        binary_tree_str = ""
+        if node.left:
+            binary_tree_str += f" {self.print_three(node.left)} - "
+
+        binary_tree_str += f' {node.data}'
+
+        if node.right:
+            binary_tree_str += f" - {self.print_three(node.right)}"
+
+        return binary_tree_str
+
     def insert(self, data):
         if self.root is None:
             self.root = Node(data)
@@ -46,21 +64,6 @@ class BinaryTree:
             else:
                 return False
 
-    def __str__(self):
-        if self.root is None:
-            return ""
-
-        self.print_three(self.root)
-
-    def print_three(self, node: Node):
-        if node.left:
-            self.print_three(node.left)
-
-        print(f'{node.data}')
-
-        if node.right:
-            self.print_three(node.right)
-
     def remove(self, data):
         if self.root:
             self.delete_node(data, self.root)
@@ -84,10 +87,10 @@ class BinaryTree:
                 return self.get_predecessor(node.left)
 
         elif node.data < data:
-            node.left = self.delete_node(data, node.left)
+            node.right = self.delete_node(data, node.right)
 
         elif node.data > data:
-            node.right = self.delete_node(data, node.right)
+            node.left = self.delete_node(data, node.left)
 
         else:
             print("404 Not found")
