@@ -20,9 +20,10 @@ def find_substring(my_string: str, my_length: int):
         return next(iter(vowels_str))
     return 'Not found!'
 
+
 def get_strings(my_string: str, my_length: int) -> dict:
     strings = {}
-    for index, _ in enumerate(my_string):
+    for index in range(len(my_string)):
         new_string = my_string[index:]
         if len(new_string) >= my_length:
             while len(new_string) > my_length:
@@ -34,8 +35,8 @@ def get_strings(my_string: str, my_length: int) -> dict:
             )
             strings[new_string] = number_of_vowels
 
-        new_string = my_string[: -index]
-
+        new_string = my_string[::]
+        new_string = new_string[index:]
         if len(new_string) >= my_length:
             while len(new_string) > my_length:
                 new_string = new_string[:-1]
