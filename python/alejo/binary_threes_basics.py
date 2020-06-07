@@ -40,11 +40,13 @@ class BinaryTree:
             if node.left:
                 self.insert_data(new_data, node.left)
             else:
+                print(f"Inserting into the left of {node.data} the {new_data}")
                 node.left = Node(new_data)
         else:
             if node.right:
                 self.insert_data(new_data, node.right)
             else:
+                print(f"Inserting into the right of {node.data} the {new_data}")
                 node.right = Node(new_data)
 
     def contains_value(self, new_data: int, node: Node) -> bool:
@@ -73,24 +75,39 @@ class BinaryTree:
             return node
 
         if node.data == data:
-
+            print(f"Remove when is equal {data}")
+            print(f"Node data {node.data}")
             if not node.right and not node.left:
+                print(f"Removing {node.data} with no child")
                 return None
 
             elif not node.left:
+                print(f"Removing {node.data} with no left child and "
+                      f"replacing by {node.right.data}")
                 return node.right
 
             elif not node.right:
+                print(f"Removing {node.data} with no right child and "
+                      f"replacing by {node.left.data}")
                 return node.left
 
             else:
-                return self.get_predecessor(node.left)
+                predecessor = self.get_predecessor(node.left)
+                predecessor.right = node.right
+                return predecessor
 
         elif node.data < data:
+            print(f"Remove the right {data}")
+            print(f"Node data {node.data}")
             node.right = self.delete_node(data, node.right)
+            return node
 
         elif node.data > data:
+            print(f"Remove from the left Node {node.data}")
+            print(f" data {data}")
             node.left = self.delete_node(data, node.left)
+
+            return node
 
         else:
             print("404 Not found")
@@ -98,4 +115,6 @@ class BinaryTree:
     def get_predecessor(self, node: Node) -> Node:
         if node.right:
             return self.get_predecessor(node.right)
+
+        print(f"Returning predecessor {node.data}")
         return node
